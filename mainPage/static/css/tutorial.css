@@ -1,0 +1,117 @@
+#help_overlay {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    padding: 20px;
+    background-color: rgba(0,0,0,.8);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    z-index: 10000;
+    color: #fff;
+}
+
+#help_overlay p {
+    padding: 0px;
+    margin: 2px;
+}
+
+/*************************************/ 
+/* Choice overlay style for topic 09 */
+/*************************************/ 
+ 
+#choice_overlay {
+    position: fixed;
+    display: none;
+    padding: 20px;
+    background-color: rgba(0,0,0,.8);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    z-index: 10001;
+    color: #fff;
+}
+
+#choice_overlay a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#choice_overlay a:before {
+	content: "\25B6   ";
+}
+
+#choice_overlay p {
+    padding: 0px;
+    margin: 2px;
+    margin-bottom: 4px;
+}
+
+#choice_overlay p:not(:first-child) {
+    margin-top: 8px;
+    border-top: 1px solid #aaa;
+    padding-top: 10px;
+}
+
+#menubar{
+    position: fixed;
+    left: 10px;
+    width: 230px;
+    height: 50px;
+    background: rgba(0,0,0,.8);
+}
+
+#submenu{
+    visibility: hidden;
+}
+.wrapper {
+    display: block;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* top layer */
+    z-index: 9999;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    /* full screen */
+    width: 100vw;
+    height: 100vh;
+    /* transparent black */
+    background: rgba(0, 0, 0, 0.7);
+    /* middle layer, i.e. appears below the sidebar */
+    z-index: 998;
+    opacity: 0;
+    /* animate the transition */
+    transition: all 0.5s ease-in-out;
+}
+/* display .overlay when it has the .active class */
+.overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+#dismiss {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    /* top right corner of the sidebar */
+    top: 10px;
+    right: 10px;
+}
+
+nav{
+    background-color: #273c75;
+}
+
+.navbrand{
+    color: white;
+    font-size: xx-large;
+    font-weight: bold;
+}

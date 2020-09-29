@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <?xml-model href="http://music-encoding.org/schema/3.0.0/mei-all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+    <?xml-model href="http://music-encoding.org/schema/3.0.0/mei-all.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+    <mei xmlns="http://www.music-encoding.org/ns/mei" meiversion="3.0.0">
+        <meiHead>
+            <fileDesc>
+                <titleStmt>
+                    <title>My Grandfather's Clock</title>
+                    <respStmt>
+                        <persName role="Composer">ScoreWriter</persName>
+                    </respStmt>
+                </titleStmt>
+                <pubStmt>
+                    <date>2016-09-27 13:32:47</date>
+                </pubStmt>
+            </fileDesc>
+            <encodingDesc>
+                <projectDesc>
+                    <p>Transcoded from Humdrum with Verovio version 0.9.13-dev-2db4a57</p>
+                    <p>Encoded by: Craig Stuart Sapp</p>
+                </projectDesc>
+            </encodingDesc>
+            <revisionDesc>
+                <change n="1">
+                    <respStmt>
+                        <persName>Laurent Pugin</persName>
+                  </respStmt>
+                    <changeDesc>
+                        <p>Truncating the file and adding choice markup</p>
+                    </changeDesc>
+                    <date>2016-09-27</date>
+                </change>
+            </revisionDesc>
+        </meiHead>
+        <music>
+            <body>
+                <mdiv>
+                    <score>
+                        <scoreDef  midi.bpm="120">
+                            <staffGrp  symbol="brace" barthru="true">
+                                <staffDef  clef.shape="G" clef.line="2"  meter.count="4" meter.unit="4" n="1" lines="5" />
+                            </staffGrp>
+                        </scoreDef>
+
+                        <section >
+                        <measure  n="1">
+                            <staff  n="1">
+                                <layer  n="1">  
+                                <rest dots="1" dur="2" />
+                                 <chord  dur="4" stem.dir="up">
+                                            <note oct="4" pname="g"/>                                      
+                                        </chord>
+                                        </layer>
+                                </staff>  
+                            </measure>
+
+                            <measure  n="1">
+                                <staff  n="1">
+                                    <layer  n="1">
+                                
+                        <chord  dur="4" stem.dir="up">
+                                            <note oct="5" pname="c"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="4" pname="b"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="c"/>                                      
+                                        </chord><chord  dur="4" stem.dir="up">
+                                            <note oct="5" pname="d"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="c"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="d"/>                                      
+                                        </chord>
+            </layer>
+                                </staff>  
+                            </measure>
+
+                            <measure  n="1">
+                                <staff  n="1">
+                                    <layer  n="1"> <chord  dur="4" stem.dir="up">
+                                            <note oct="5" pname="e"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="f"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="e"/>                                      
+                                        </chord><chord  dur="4" stem.dir="up">
+                                            <note oct="4" pname="a"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="d"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="d"/>                                      
+                                        </chord>
+            </layer>
+                                </staff>  
+                            </measure>
+
+                            <measure  n="1">
+                                <staff  n="1">
+                                    <layer  n="1"> <chord  dur="4" stem.dir="up">
+                                            <note oct="5" pname="c"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="c"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="c"/>                                      
+                                        </chord><chord  dur="4" stem.dir="up">
+                                            <note oct="4" pname="b"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="4" pname="a"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="4" pname="b"/>                                      
+                                        </chord>
+            </layer>
+                                </staff>  
+                            </measure>
+
+                            <measure  n="1">
+                                <staff  n="1">
+                                    <layer  n="1"> <chord  dots ="1" dur= "2" stem.dir="up">
+                                        <note oct="5" pname="c"/>                                      
+                                    </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="4" pname="g"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="4" pname="g"/>                                      
+                                        </chord>
+            </layer>
+                                </staff>  
+                            </measure>
+
+                            <measure  n="1">
+                                <staff  n="1">
+                                    <layer  n="1"> <chord  dur="4" stem.dir="up">
+                                            <note oct="5" pname="c"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="4" pname="b"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="c"/>                                      
+                                        </chord><chord  dur="4" stem.dir="up">
+                                            <note oct="5" pname="d"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="c"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="d"/>                                      
+                                        </chord>
+            </layer>
+                                </staff>  
+                            </measure>
+
+                            <measure  n="1">
+                                <staff  n="1">
+                                    <layer  n="1"> <chord  dur="4" stem.dir="up">
+                                            <note oct="5" pname="e"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="f"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="e"/>                                      
+                                        </chord><chord  dur="4" stem.dir="up">
+                                            <note oct="4" pname="a"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="d"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="d"/>                                      
+                                        </chord>
+            </layer>
+                                </staff>  
+                            </measure>
+
+                            <measure  n="1">
+                                <staff  n="1">
+                                    <layer  n="1"> <chord  dur="4" stem.dir="up">
+                                            <note oct="5" pname="c"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="c"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="c"/>                                      
+                                        </chord><chord  dur="4" stem.dir="up">
+                                            <note oct="4" pname="b"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="4" pname="a"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="4" pname="b"/>                                      
+                                        </chord>
+            </layer>
+                                </staff>  
+                            </measure>
+
+                            <measure  n="1">
+                                <staff  n="1">
+                                    <layer  n="1"> <chord  dots ="1" dur= "2" stem.dir="up">
+                                        <note oct="5" pname="c"/>                                      
+                                    </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="c"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="e"/>                                      
+                                        </chord>
+            </layer>
+                                </staff>  
+                            </measure>
+
+                            <measure  n="1">
+                                <staff  n="1">
+                                    <layer  n="1"> <chord  dur="4" stem.dir="up">
+                                            <note oct="5" pname="g"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="e"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="d"/>                                      
+                                        </chord><chord  dur="4" stem.dir="up">
+                                            <note oct="5" pname="c"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="4" pname="b"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="c"/>                                      
+                                        </chord>
+            </layer>
+                                </staff>  
+                            </measure>
+
+                            <measure  n="1">
+                                <staff  n="1">
+                                    <layer  n="1"> <chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="d"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="c"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="4" pname="b"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="4" pname="a"/>                                      
+                                        </chord><chord  dur="4" stem.dir="up">
+                                            <note oct="4" pname="g"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="c"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="e"/>                                      
+                                        </chord>
+            </layer>
+                                </staff>  
+                            </measure>
+
+                            <measure  n="1">
+                                <staff  n="1">
+                                    <layer  n="1"> <chord  dur="4" stem.dir="up">
+                                            <note oct="5" pname="g"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="e"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="d"/>                                      
+                                        </chord><chord  dur="4" stem.dir="up">
+                                            <note oct="5" pname="c"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="4" pname="b"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="c"/>                                      
+                                        </chord>
+            </layer>
+                                </staff>  
+                            </measure>
+
+                            <measure  n="1">
+                                <staff  n="1">
+                                    <layer  n="1"> <chord  dots ="1" dur= "2" stem.dir="up">
+                                        <note oct="5" pname="d"/>                                      
+                                    </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="4" pname="g"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="4" pname="g"/>                                      
+                                        </chord>
+            </layer>
+                                </staff>  
+                            </measure>
+
+                            <measure  n="1">
+                                <staff  n="1">
+                                    <layer  n="1"> <chord  dur="2" stem.dir="up">
+                                            <note oct="5" pname="c"/>                                      
+                                        </chord><chord  dur="2" stem.dir="up">
+                                            <note oct="5" pname="d"/>                                      
+                                        </chord>
+            </layer>
+                                </staff>  
+                            </measure>
+
+                            <measure  n="1">
+                                <staff  n="1">
+                                    <layer  n="1"> <chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="e"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="e"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="f"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="e"/>                                      
+                                        </chord><chord  dur="4" stem.dir="up">
+                                            <note oct="4" pname="a"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="d"/>                                      
+                                        </chord><chord  dur="8" stem.dir="up">
+                                            <note oct="5" pname="d"/>                                      
+                                        </chord>
+            </layer>
+                                </staff>  
+                            </measure>
+
+                            <measure  n="1">
+                                <staff  n="1">
+                                    <layer  n="1"> <chord  dur="2" stem.dir="up">
+                                            <note oct="5" pname="c"/>                                      
+                                        </chord><chord  dur="2" stem.dir="up">
+                                            <note oct="4" pname="b"/>                                      
+                                        </chord>
+            </layer>
+                                </staff>  
+                            </measure>
+
+                            <measure  n="1">
+                                <staff  n="1">
+                                    <layer  n="1"> <chord  dots ="1" dur= "2" stem.dir="up">
+                                        <note oct="5" pname="c"/>                                      
+                                    </chord>
+    <rest dur="4" />
+    </layer>
+                                </staff>  
+                            </measure>
+    </section>
+                    </score>
+                </mdiv>
+            </body>
+        </music>
+    </mei>
+
+    
+    
