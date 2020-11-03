@@ -10,6 +10,6 @@ def index(request):
     return render(request, "mainPage/index.html", {})
 
 def score(request):
-    clearData()
-    add_file('test')
+    # clearData()
+    # add_file('test')
     return render(request, "mainPage/verovio.html", {})
