@@ -10,6 +10,7 @@ def index(request):
     return render(request, "mainPage/index.html", {})
 
 def score(request):
-    # clearData()
-    # add_file('test')
+    clearData()
+    input = '../Module/data/flap.wav'  # 추후 사용자가 업로드 한 파일을 불러올 예정
+    add_file(input)
     return render(request, "mainPage/verovio.html", {})

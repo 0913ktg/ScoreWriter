@@ -6,6 +6,15 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 import shutil
+from .analysis_module import *
+
+# 학습 시간 계산 (한국 시간으로 출력하기)
+from datetime import datetime
+from pytz import timezone
+
+start_time = datetime.now(timezone('Asia/Seoul'))
+end_time = ''
+print('시작 시간: str', start_time)
 
 # 분석한 자료를 초기화 하는 메서드
 
@@ -87,18 +96,35 @@ mags = ''
 mags_db = ''
 n_fft = 64
 amin = 1e-10
+test_arr = []
+sort_arr = []
+freq_arr = []
+mag_arr = []
+time_arr = []
+analysis_body = []
+musicTitle = ''
 
 
 def add_file(input):
-    global y, sr
+    global y, sr, musicTitle
+    print(f'분석할 파일: {input}')
+    musicTitle = input.split('/')
+    musicTitle = musicTitle[-1]
+
     # file = '../Module/data/elise.mp3'
-    input = '../Module/data/clock.wav'  # 추후 사용자가 업로드 한 파일을 불러올 예정
     y, sr = librosa.load(input, sr=44100)
     librosa.display.waveplot(y, sr=sr)
 
     create_cqt_arr()
     create_chromagram_arr()
     create_analysis_data()
+    create_analysis_body()
+    # 학습 총 소요시간 계산 (한국시간으로 출력하기)
+    end_time = datetime.now(timezone('Asia/Seoul'))
+    print('시작 시간 : '+ str(start_time))
+    print('종료 시간 : '+ str(end_time))
+    print()
+    print('총 학습 시간 : '+ str(end_time - start_time))
 
 
 def create_cqt_arr():
@@ -157,6 +183,26 @@ def create_chromagram_arr():
     print('array_Chromagram_index 정보를 저장했습니다.', '파일경로: ', file_path)
 
 
+def create_validaiton_file(file_path, data, formating):
+    try:
+        if not(os.path.isdir(file_path)):
+            os.makedirs(os.path.join(file_path))
+    except OSError as e:
+        if e.errno != errno.EEXIST:
+            print("Failed to create directory!!!!!")
+            raise
+
+    for i in range(len(data)):
+        fname = file_path+formating+str(i)+".txt"
+    #     print("Make File: ", fname)
+        np.savetxt(fname, data[i], fmt='%.3f', delimiter=', ')
+        for k in range(len(data)):
+            pass
+    #         print(i, k, freq[i][k])
+
+    print(formating, ' 정보를 저장했습니다.', '파일경로: ', file_path)
+
+
 def create_analysis_data():
     global freq, times, mags, mags_db, amin, n_fft
     freq, times, mags = librosa.core.reassigned_spectrogram(y, sr=sr)
@@ -168,23 +214,7 @@ def create_analysis_data():
 
     file_path = '../Module/data/array_Freq/'
 
-    try:
-        if not(os.path.isdir(file_path)):
-            os.makedirs(os.path.join(file_path))
-    except OSError as e:
-        if e.errno != errno.EEXIST:
-            print("Failed to create directory!!!!!")
-            raise
-
-    for i in range(len(freq)):
-        fname = file_path+"array_Freq_index"+str(i)+".txt"
-    #     print("Make File: ", fname)
-        np.savetxt(fname, freq[i], fmt='%.3f', delimiter=', ')
-        for k in range(len(freq)):
-            pass
-    #         print(i, k, freq[i][k])
-
-    print('array_Freq_index 정보를 저장했습니다.', '파일경로: ', file_path)
+    create_validaiton_file(file_path, freq, 'array_Freq_index')
 
     # times Data
     np.savetxt('../Module/data/array_Times_all.txt',
@@ -192,23 +222,7 @@ def create_analysis_data():
 
     file_path = '../Module/data/array_Times/'
 
-    try:
-        if not(os.path.isdir(file_path)):
-            os.makedirs(os.path.join(file_path))
-    except OSError as e:
-        if e.errno != errno.EEXIST:
-            print("Failed to create directory!!!!!")
-            raise
-
-    for i in range(len(times)):
-        fname = file_path+"array_Times_index"+str(i)+".txt"
-    #     print("Make File: ", fname)
-        np.savetxt(fname, times[i], fmt='%.3f', delimiter=', ')
-        for k in range(len(times)):
-            pass
-    #         print(i, k, times[i][k])
-
-    print('array_Times_index 정보를 저장했습니다.', '파일경로: ', file_path)
+    create_validaiton_file(file_path, times, 'array_Times_index')
 
     # Magnitude Data
     np.savetxt('../Module/data/array_Magnitude_all.txt',
@@ -216,20 +230,85 @@ def create_analysis_data():
 
     file_path = '../Module/data/array_Magnitude/'
 
-    try:
-        if not(os.path.isdir(file_path)):
-            os.makedirs(os.path.join(file_path))
-    except OSError as e:
-        if e.errno != errno.EEXIST:
-            print("Failed to create directory!!!!!")
-            raise
+    create_validaiton_file(file_path, mags_db, 'array_Magnitude_index')
 
-    for i in range(len(mags_db)):
-        fname = file_path+"array_Magnitude_index"+str(i)+".txt"
-    #     print("Make File: ", fname)
-        np.savetxt(fname, mags_db[i], fmt='%.3f', delimiter=', ')
-        for k in range(len(mags_db)):
-            pass
-    #         print(i, k, mags_db[i][k])
 
-    print('array_Magnitude_index 정보를 저장했습니다.', '파일경로: ', file_path)
+def create_analysis_body():
+    global test_arr, times, freq, mags_db, freq_arr, mag_arr, time_arr, analysis_body, musicTitle
+    test_np = []
+    print(freq.size)
+    j_arr = []
+    freq_data = []
+
+    out_result = open('../Module/data/freq.txt', 'w')
+
+    for atimes, afreq, amags_db in zip(times, freq, mags_db):
+        for i, j, k in zip(range(0, atimes.size, 1), range(0, afreq.size, 1), range(0, amags_db.size, 1)):
+            if afreq[i] and amags_db[j] >= -13:
+                #             print(str.format("%.2f"% atimes[i]), " ", afreq[j], " ", amags_db[k], file=out_result)
+                #             test_arr.append()
+                #             print(i, " ", j)
+                test_dict = {}
+                test_dict['Times'] = str.format("%5.2f" % atimes[i])
+                test_dict['Freq'] = float(str.format("%6.3f" % afreq[j]))
+
+                test_dict['Magnitude'] = str.format("%6.3f" % amags_db[k])
+                test_arr.append(test_dict)
+    # out_result.close()
+    # print("---------\n", open('data/freq.txt').read())
+
+    sort_arr = sorted(test_arr, key=(lambda x: x['Times']))
+
+    for i in sort_arr:
+        freq_arr.append(int(i['Freq']))
+        mag_arr.append(int(abs(float(i['Magnitude']))))
+        time_arr.append(float(i['Times']))
+
+    for i in sort_arr:
+        print(i, file=out_result)
+    out_result.close()
+
+    minHz = 50000
+    start, end, rest = 0, 0, 0
+    note, octave, dur = '', '', ''
+
+    for i in range(0, len(freq_arr)-1):
+        if start == 0:
+            start = time_arr[i]
+            rest = start - time_arr[i-1]
+        if time_arr[i] > (time_arr[i+1] - 0.03) and time_arr[i+1] != 0:
+            #print(time_arr[i],"  :  ",freq_arr[i])
+
+            if minHz > freq_arr[i]:
+                minHz = freq_arr[i]
+        else:
+            if minHz != 50000:
+                note, octave = notePrint(minHz)
+                #print("sd:",start , time_arr[i+1])
+                rest = restPrint(time_arr[i+1] - start)
+                score_board = {}
+                score_board['note'] = note
+                score_board['oct'] = octave
+                score_board['dur'] = rest
+                analysis_body.append(score_board)
+            minHz = 50000
+            start = 0
+    note, octave = notePrint(minHz)
+
+    #print("sd:",start , time_arr[i+1])
+    rest = restPrint(0.866)
+    score_board = {}
+    score_board['note'] = note
+    score_board['oct'] = octave
+    score_board['dur'] = rest
+    analysis_body.append(score_board)
+
+    print(start, time_arr[i+1])
+
+    answer = mkMeiFile(analysis_body, musicTitle)
+
+    result = open(
+        '/Users/ganghansaebyeol/Documents/Develop/Python/Capston/ScoreWriter/mainPage/static/mei/complete_musics.mei', 'w')
+
+    print(answer, file=result)
+    result.close()
