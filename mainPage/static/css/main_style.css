@@ -45,7 +45,7 @@ li{
       opacity: 1;
   }
 }
-input{
+.url-input{
   width: 40vw;
   height: 5vh;
   text-align: center;
@@ -54,15 +54,30 @@ input{
   margin-top: 7vh;
 }
 
-button{
-  width: 7vw;
-  height: 4vh;
-  border-radius: 50px;
+/* .file-btn{
+  width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+} */
+/* .file-btn + label{
   border: none;
-  color: white;
-  background-color: #2B314B;
-}
+  background-color: #fff;
+  border-radius: 2rem;
+  padding: 8px 17px 8px 17px;
+  font-weight: 500;
+  font-size: 15px;
+  outline: none;
+} */
 
+.div-or{
+  color: white;
+  text-align: center;
+  margin: 2vh 0;
+
+}
 .title{
   color : white;
   text-align: center;

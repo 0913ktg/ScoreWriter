@@ -43,13 +43,13 @@
                         </scoreDef>
 
                         <section >
-                        <measure  n="1">
-                            <staff  n="1">
-                                <layer  n="1">  
-                                    <rest dots="1" dur="2" />
-                                </layer>
-                            </staff>  
-                        </measure>
+                            <measure n="1">
+                                <staff n="1">
+                                    <layer n="1">  
+                                        <rest dur="4" />
+                                    </layer>
+                                </staff>  
+                            </measure>
                             <measure  n="1">
                                 <staff  n="1">
                                     <layer  n="1">
@@ -72,11 +72,11 @@
                                     <layer  n="1"> <chord  dur="4" stem.dir="up">
                                             <note oct="4" pname="d"/>                                      
                                         </chord><chord  dur="4" stem.dir="up">
-                                            <note oct="4" pname="g"/>                                      
+                                            <note oct="4" pname="f"/>                                      
                                         </chord><chord  dur="4" stem.dir="up">
                                             <note oct="4" pname="d"/>                                      
                                         </chord><chord  dur="4" stem.dir="up">
-                                            <note oct="4" pname="g"/>                                      
+                                            <note oct="4" pname="f"/>                                      
                                         </chord>
             </layer>
                                 </staff>  
@@ -87,11 +87,11 @@
                                     <layer  n="1"> <chord  dur="4" stem.dir="up">
                                             <note oct="4" pname="e"/>                                      
                                         </chord><chord  dur="4" stem.dir="up">
-                                            <note oct="4" pname="g"/>                                      
+                                            <note oct="4" pname="f#"/>                                      
                                         </chord><chord  dur="4" stem.dir="up">
                                             <note oct="4" pname="e"/>                                      
                                         </chord><chord  dur="4" stem.dir="up">
-                                            <note oct="4" pname="g"/>                                      
+                                            <note oct="4" pname="f#"/>                                      
                                         </chord>
             </layer>
                                 </staff>  
@@ -100,7 +100,7 @@
                             <measure  n="1">
                                 <staff  n="1">
                                     <layer  n="1"> <chord  dur="4" stem.dir="up">
-                                            <note oct="4" pname="g"/>                                      
+                                            <note oct="4" pname="f"/>                                      
                                         </chord><chord  dur="4" stem.dir="up">
                                             <note oct="4" pname="a"/>                                      
                                         </chord><chord  dur="4" stem.dir="up">
@@ -115,7 +115,7 @@
                             <measure  n="1">
                                 <staff  n="1">
                                     <layer  n="1"> <chord  dur="4" stem.dir="up">
-                                            <note oct="4" pname="g"/>                                      
+                                            <note oct="4" pname="f#"/>                                      
                                         </chord><chord  dur="4" stem.dir="up">
                                             <note oct="4" pname="b"/>                                      
                                         </chord><chord  dur="4" stem.dir="up">
@@ -145,9 +145,9 @@
                                         </chord><chord  dur="4" stem.dir="up">
                                             <note oct="4" pname="a"/>                                      
                                         </chord><chord  dur="4" stem.dir="up">
-                                            <note oct="4" pname="g"/>                                      
+                                            <note oct="4" pname="f#"/>                                      
                                         </chord><chord  dur="4" stem.dir="up">
-                                            <note oct="4" pname="g"/>                                      
+                                            <note oct="4" pname="f"/>                                      
                                         </chord>
             </layer>
                                 </staff>  
@@ -180,5 +180,5 @@
         </music>
     </mei>
 
-
+    
     

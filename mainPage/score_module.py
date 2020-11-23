@@ -108,8 +108,8 @@ musicTitle = ''
 def add_file(input):
     global y, sr, musicTitle
     print(f'분석할 파일: {input}')
-    musicTitle = input.split('/')
-    musicTitle = musicTitle[-1]
+    musicTitle = str(input)
+    # musicTitle = musicTitle[-1]
 
     # file = '../Module/data/elise.mp3'
     y, sr = librosa.load(input, sr=44100)
@@ -121,10 +121,10 @@ def add_file(input):
     create_analysis_body()
     # 학습 총 소요시간 계산 (한국시간으로 출력하기)
     end_time = datetime.now(timezone('Asia/Seoul'))
-    print('시작 시간 : '+ str(start_time))
-    print('종료 시간 : '+ str(end_time))
+    print('시작 시간 : ' + str(start_time))
+    print('종료 시간 : ' + str(end_time))
     print()
-    print('총 학습 시간 : '+ str(end_time - start_time))
+    print('총 학습 시간 : ' + str(end_time - start_time))
 
 
 def create_cqt_arr():
@@ -283,7 +283,7 @@ def create_analysis_body():
                 minHz = freq_arr[i]
         else:
             if minHz != 50000:
-                note, octave = notePrint(minHz)
+                note, octave = notePrint2(minHz)
                 #print("sd:",start , time_arr[i+1])
                 rest = restPrint(time_arr[i+1] - start)
                 score_board = {}
@@ -293,7 +293,7 @@ def create_analysis_body():
                 analysis_body.append(score_board)
             minHz = 50000
             start = 0
-    note, octave = notePrint(minHz)
+    note, octave = notePrint2(minHz)
 
     #print("sd:",start , time_arr[i+1])
     rest = restPrint(0.866)
@@ -302,6 +302,10 @@ def create_analysis_body():
     score_board['oct'] = octave
     score_board['dur'] = rest
     analysis_body.append(score_board)
+
+    analysis_file = open('../Module/data/analysis_file.txt', 'w')
+
+    print(analysis_body, file=analysis_file)
 
     print(start, time_arr[i+1])
 
