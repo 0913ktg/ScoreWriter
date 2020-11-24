@@ -19,10 +19,25 @@
 
   <!-- Font Awesome -->
   <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-
+  <style>
+    #loading-image {
+      display: none;
+      z-index: 1000;
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+    }
+    #loading{
+      position: relative;
+      top: 20%;
+      left: 30%;
+    }
+  </style>
 </head>
 
 <body>
+  <div id="loading-image"><img id="loading" src="{% static 'images/Spinner-1s-200px.gif'%}" alt="Loading..." />
+  </div>
 
   <!-- Header -->
   <header>
@@ -50,6 +65,19 @@
     <script>
       document.getElementById("upload_files").onchange = function () {
         document.getElementById("youtube_url").submit();
+        loading();
+      }
+
+      function loading() {
+        showloading();
+        setTimeout(hideloading, 500000);
+      }
+
+      function showloading() {
+        $('#loading-image').css("display", "inline-block");
+      }
+      function hideloading() {
+        $('#loading-image').css("display", "none");
       }
     </script>
   </section>

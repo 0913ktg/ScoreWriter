@@ -20,6 +20,16 @@ print('시작 시간: str', start_time)
 
 
 def clearData():
+    global analysis_body, test_arr, sort_arr, freq_arr, mag_arr, time_arr
+
+    # clear Arr
+    test_arr = []
+    sort_arr = []
+    freq_arr = []
+    mag_arr = []
+    time_arr = []
+    analysis_body = []
+
     # clear Data
     array_Chromagram_dir = '../Module/data/array_Chromagram/'
     array_CQT_dir = '../Module/data/array_CQT/'
@@ -55,7 +65,7 @@ def clearData():
     array_Magnitude = '../Module/data/array_Magnitude_all.txt'
     array_Times = '../Module/data/array_Times_all.txt'
     freq_data = '../Module/data/freq.txt'
-    mei_file = '../Module/complete_music.mei'
+    mei_file = '/Users/ganghansaebyeol/Documents/Develop/Python/Capston/ScoreWriter/mainPage/static/mei/complete_musics.mei'
 
     file_ = [
         array_Chromagram,
@@ -271,31 +281,43 @@ def create_analysis_body():
     minHz = 50000
     start, end, rest = 0, 0, 0
     note, octave, dur = '', '', ''
-
+    count = 0
+    roopArr = []
     for i in range(0, len(freq_arr)-1):
+        roopArr.append(freq_arr[i])
         if start == 0:
             start = time_arr[i]
             rest = start - time_arr[i-1]
-        if time_arr[i] > (time_arr[i+1] - 0.03) and time_arr[i+1] != 0:
-            #print(time_arr[i],"  :  ",freq_arr[i])
+        if time_arr[i] > (time_arr[i+1] - 0.03):
+            roopArr.append(freq_arr[i])
+            #print(roopArr)
 
-            if minHz > freq_arr[i]:
-                minHz = freq_arr[i]
         else:
-            if minHz != 50000:
-                note, octave = notePrint2(minHz)
-                #print("sd:",start , time_arr[i+1])
-                rest = restPrint(time_arr[i+1] - start)
-                score_board = {}
-                score_board['note'] = note
-                score_board['oct'] = octave
-                score_board['dur'] = rest
-                analysis_body.append(score_board)
-            minHz = 50000
-            start = 0
-    note, octave = notePrint2(minHz)
 
-    #print("sd:",start , time_arr[i+1])
+            roopArr.sort()
+            if(len(roopArr)>3):
+                note, octave = notePrint2(roopArr[3])
+            else:
+                note, octave = notePrint2(roopArr[0])
+            # print("sd:",start , time_arr[i+1])
+            rest = restPrint(time_arr[i+1] - start)
+            score_board = {}
+            score_board['note'] = note
+            score_board['oct'] = octave
+            score_board['dur'] = rest
+            analysis_body.append(score_board)
+            count = 0
+            roopArr = []
+            start = 0
+
+    roopArr.sort()
+    if(len(roopArr)>0):
+        if(len(roopArr)>3):
+            note, octave = notePrint2(roopArr[3])
+        else:
+            note, octave = notePrint2(roopArr[0])
+
+    # print("sd:",start , time_arr[i+1])
     rest = restPrint(0.866)
     score_board = {}
     score_board['note'] = note

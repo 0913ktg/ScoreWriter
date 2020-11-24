@@ -3,8 +3,8 @@ note_list = [['c', '1', 32.70], ['c#', '1', 34.65], ['d', '1', 36.71], ['d#', '1
                  'f#', '2', 92], ['g', '2', 98], ['a', '2', 110], ['a#', '2', 117], ['b', '2', 123],
              ['c', '3', 131], ['c#', '3', 139], ['d', '3', 147], ['d#', '3', 156], ['e', '3', 165], [
                  'f', '3', 175], ['f#', '3', 185], ['g', '3', 196], ['a', '3', 220], ['a#', '3', 233], ['b', '3', 246],
-             ['c', '4', 262], ['c#', '4', 277], ['d', '4', 294], ['d#', '4', 311.13], ['e', '4', 329.63], [
-                 'f', '4', 349.23], ['f#', '4', 369.99], ['g', '4', 392.00], ['a', '4', 440], ['a#', '4', 466], ['b', '4', 494],
+             ['c', '4', 262], ['c#', '4', 277], ['d', '4', 294], ['d#', '4', 311.13], ['e', '4', 326.63], [
+                 'f', '4', 340.23], ['f#', '4', 354.99], ['g', '4', 362.00], ['a', '4', 440], ['a#', '4', 466], ['b', '4', 494],
              ['c', '5', 523], ['c#', '5', 554], ['d', '5', 587], ['d#', '5', 622], ['e', '5', 659], [
                  'f', '5', 698], ['f#', '5', 740], ['g', '5', 784], ['a', '5', 880], ['a#', '5', 932], ['b', '5', 988],
              ['c', '6', 1047], ['c#', '6', 1109], ['d', '6', 1175], ['d#', '6', 1245], ['e', '6', 1319], [
@@ -70,7 +70,7 @@ def notePrint(min):  # 계이름 분석 함수
 
 def restPrint(time):
     rest = '3'
-    if time >= 0.865 and time <= 1.2:
+    if time >= 0.865 and time <= 1.4:
         rest = '2'
         print('2분음표')
     elif time >= 0.625 and time < 0.865:
@@ -96,11 +96,11 @@ def notePrint2(min):
         min_val = 9999
 
     val_index = 0
-
+    print("@@", min)
     for i in range(1, len(note_list)-1):
-        if (note_list[i][2] - min) < min_val and (note_list[i][2] - min) >= 0:
-            print(min_val)
-            min_val = note_list[i][2] - min
+        if (abs(note_list[i][2] - min)) < min_val:
+
+            min_val = abs(note_list[i][2] - min)
             val_index = i
 
     return note_list[val_index][0], note_list[val_index][1]
@@ -186,15 +186,32 @@ def mkMeiFile(list, musicTitle):
     for i in list:
         dur_sum += check_dur_sum(int(i['dur']))
 
-        if(int(i['dur']) == 3):
+        if int(i['dur']) == 3 and '#' in i['note']:
+            dur = """dots ="1" dur= """ + '"' + "2" + '"'
+            note = '"' + i['note'][0]+'"'
+            oct = '"' + i['oct']+'"'
+
+            buffer = """<chord  """ + dur + """ stem.dir="up">
+                                        <note oct=""" + oct + """ pname=""" + note + """ accid = "s"/>                                      
+                                    </chord>"""
+
+        elif '#' in i['note']:
+            dur = '"' + i['dur']+'"'
+            note = '"' + i['note'][0]+'"'
+            oct = '"' + i['oct']+'"'
+
+            buffer = """<chord dur=""" + dur + """ stem.dir="up">
+                                            <note oct=""" + oct + """ pname=""" + note + """ accid = "s"/>                                      
+                                        </chord>"""
+
+        elif int(i['dur']) == 3:
             dur = """dots ="1" dur= """ + '"' + "2" + '"'
             note = '"' + i['note']+'"'
             oct = '"' + i['oct']+'"'
 
             buffer = """<chord  """ + dur + """ stem.dir="up">
-                                        <note oct=""" + oct + """ pname=""" + note + """/>                                      
+                                        <note oct=""" + oct + """ pname=""" + note + """ />                                      
                                     </chord>"""
-
         else:
             dur = '"' + i['dur']+'"'
             note = '"' + i['note']+'"'
@@ -203,10 +220,10 @@ def mkMeiFile(list, musicTitle):
             buffer = """<chord  dur=""" + dur + """ stem.dir="up">
                                             <note oct=""" + oct + """ pname=""" + note + """/>                                      
                                         </chord>"""
-                                        
+
         inner += buffer
 
-        if dur_sum == 4:
+        if dur_sum >= 4:
             inner += """
             </layer>
                                 </staff>  
